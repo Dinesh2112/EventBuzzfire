@@ -1,38 +1,466 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Gabarito&family=Inter:wght@300;500&family=Kanit:wght@300&family=Lato:ital@1&family=Montserrat:wght@400;500&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Gabarito', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Lato', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    color: #fff;
+  }
+  .cursor{
+    height: 20px;
+    width: 20px;
+    background-color: #500303;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 99;
+  }
+
+  .cursor-blr{
+    height: 400px;
+    width: 400px;
+    background-color: #50030362;
+    border-radius: 50%;
+    position: fixed;
+    filter: blur(50px);
+    z-index: 9;
+  }
+  
+  .nav {
+    height: 114px;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    position: fixed;
+    justify-content: space-between;
+    z-index: 99;
+  }
+  
+  .nav img {
+    height: 120px;
+  }
+  
+  .search-bar {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+    margin-right: 20px;
+  }
+  
+  .search-bar input {
+    width: 634px;
+    height: 46px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: inherit;
+  }
+  
+  .menu-items {
+    display: flex;
+    gap: 40px;
+    padding-right: 55px;
+    font-weight: 500;
+  }
+  
+  .menu-items a {
+    text-decoration: none; /* Remove underline from h4 tags */
+   
+
+  }
+
+
+ 
+  
+  .text-button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'montserrat';
+    font-size: 16px;
+  }
+
+  video{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+  }
+
+  .main{
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.37);
+  }
+
+  .page1{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+  }
+
+  .page1 h1{
+    font-size: 70px;
+    font-weight: 1200;
+    position: relative;
+  }
+
+  .page1 h1::before{
+    content: "DISCOVER NEW EVENTS AROUND YOU";
+    position: absolute;
+    color: #740000;
+    top: -3px;
+    left: -3px;
+    -webkit-text-stroke: 1px red;
+    z-index: -1;
+
+
+  }
+
+  .page1 h3{
+    font-size: 35px;
+    font-weight: 500;
+    margin-top: 10px;
+    /* margin-bottom: 20px; */
+  }
+
+  .page1 button{
+    height: 38px;
+    width: 150px;
+    border-radius: 14px;
+    background-color: rgb(85, 0, 0);
+    cursor: pointer;
+    margin-top: 19px;
+    font-size: 20px;
+    font-weight: bold;
+    border-color: black;
+    border: 2pc;
+
+  }
+
+  .common-background {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.37);
+  }
+  
+  .page2
+  /* .cards-container  */
+  {
+    min-height: 58vh;
+    width: 100%;
+    z-index: 10;
+   
+  }
+
+  .scroller{
+    /* background-color: red; */
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 10;
+  }
+  .scroller::-webkit-scrollbar{
+    display: none;
+  }
+
+  .scroller-in{
+    display: inline-block;
+    white-space: nowrap;
+    animation-name:scroll ;
+    animation-duration: 20s;
+    animation-timing-function:linear ;
+    animation-iteration-count:infinite ;
+  }
+  
+  .scroller h4{
+    display: inline-block;
+    font-size: 140px;
+    font-weight: 900;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-right: 10px;
+    transition: all linear 0.4s;
+    color: transparent;
+    -webkit-text-stroke: 2px rgb(85, 0, 0);;
+  }
+  .scroller h4:hover{
+    color: #500303;
+  }
+
+  @keyframes scroll {
+
+    from{
+      transform: translateX(0);
+    }
+    to{
+      transform: translateX(-100%);
+    }
+  }
+
+  .button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(to right, #3498db, #2980b9);
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Wavy water-filling effect */
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #3498db, #2980b9);
+  z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  animation: fillWater 1s ease-in-out forwards;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Dark overlay on hover */
+.button:hover::before {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+@keyframes fillWater {
+  to {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
   }
 }
+.common-background {
+  position: relative;
+ 
+  
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mood {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  
+  margin-top: -53px;
+}
+
+.cards-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 50px;
+  padding-top: 72px;
+  padding-bottom: 69px;
+  position: relative;
+  z-index: 10;
+}
+.card {
+  height: 34vh ;
+  width: 50vw; /* Adjust the width as needed */
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  transition: all ease 0.6s;
 }
 
-.App-link {
-  color: #61dafb;
+#card1{
+  background-image: url("C:\Users\Dinesh\Downloads\college fest.jpeg");
+}
+#card2{
+  background-image: url("C:\Users\Dinesh\Downloads\night club.jpg");
+}
+#card3{
+  background-image: url("C:\Users\Dinesh\Downloads\musical concert.jpg");
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: #780202;
+  padding: 30px;
+  padding-top: 28px;
+  opacity: 0;
+  transition: all ease 0.6s;
+  
+}
+.overlay h4 {
+  color: #ffffff;
+  font-size: 40px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.overlay p {
+  color: #ffffff;
+  font-size: 18px;
+} 
+ .card:hover .overlay {
+  opacity: 1;
+  border-radius: 20px;
+}
+.card:hover {
+  transform: rotate3d(-1, 1, 0, 20deg);
+}
+
+.green-div {
+  margin-top: 0px;
+  height: 24vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(to left bottom, #2b0601, #610c01);
+}
+
+.green-div h4 {
+  width: 45%;
+  line-height: 50px;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 800;
+  font-size: 27px;
+  text-transform: uppercase;
+}
+
+.green-div img {
+  height: 100%;
+  object-fit: cover;
+  width: 14%;
+}
+.redirect-cards {
+  /* background-color: red; */
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  position: relative;
+  z-index: 10;
+}
+
+.explr-btn {
+  position: absolute;
+  top: 33px;
+  right: 10px;
+  padding: 9px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: rgb(85, 0, 0);
+  border: none;
+  border-radius: 20px;
+  z-index: 99;
+}
+.spotlight-card {
+  height: 50%;
+  width: 24%;
+  /* background-color: blue; */
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  transition: all ease 0.6s;
+  margin-top: 39px;
+}
+#spotlight-card1 {
+  background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-toptracer-1024x682.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+#spotlight-card2 {
+  background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/hero-4-1024x1024.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+#spotlight-card3 {
+  background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-lessons-1024x682.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+
+
+.spotlight-card:hover .overlay {
+  opacity: 1;
+}
+.spotlight-card:hover {
+  transform: rotate3d(-1, 1, 0, 20deg);
+}
+
+.spotlight{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  
+  margin-top: 22px;
+}
+
+.footer {
+  height: 163px;
+  width: 100%;
+  background: linear-gradient(to left bottom, #2b0601, #610c01);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6.5vw;
+  padding: 0 100px;
+}
+.footer > img {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  z-index: 0;
+}
+.f1 img {
+  height: 160px;
+  margin-left: -85px;
+}
+.f1,
+.f2,
+.f3,
+.f4 {
+  width: fit-content;
+  position: relative;
+  z-index: 99;
+  /* background-color: red; */
+}
+.f2 h3 {
+  font-size: 1.6vw;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.f3 h3 {
+  font-size: 1.6vw;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: #fdfdfd;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.f4 h4 {
+  font-size: 1vw;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: #fbfbfb;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 8px;
 }
