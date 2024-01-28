@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gabarito&family=Inter:wght@300;500&family=Kanit:wght@300&family=Lato:ital@1&family=Montserrat:wght@400;500&family=Roboto:wght@300&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Gabarito&family=Inter:wght@300;500&family=Kanit:wght@300&family=Lato:ital@1&family=Montserrat:wght@400;500&family=News+Cycle:wght@700&family=Roboto:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -43,7 +43,7 @@
     z-index: 99;
   }
   
-  .nav img {
+  .logo {
     height: 120px;
   }
   
@@ -67,7 +67,12 @@
     display: flex;
     gap: 40px;
     padding-right: 55px;
+    cursor: pointer;
     font-weight: 500;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
   }
   
   .menu-items a {
@@ -86,6 +91,7 @@
     cursor: pointer;
     font-family: 'montserrat';
     font-size: 16px;
+    margin-right: -25px;
   }
 
   video{
@@ -463,4 +469,49 @@
   font-weight: 600;
   line-height: 20px;
   margin-bottom: 8px;
+}
+
+.logo-login{
+  height: 147px;
+  width: 243px;
+}
+.signin-btn{
+  height: 31px;
+  width: 118px;
+  border-radius: 14px;
+  background-color: rgb(85, 0, 0);
+  cursor: pointer;
+  margin-top: -2px;
+  font-size: 20px;
+  font-weight: bold;
+  border-color: black;
+  border: 2pc;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  max-width: 40px; /* Adjust the size as needed */
+  border-radius: 50%;
+  margin-right: 10px; /* Adjust the spacing as needed */
+}
+
+.plain-circle {
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Adjust the size as needed */
+  background-color: #ccc; /* Adjust the background color as needed */
+  border-radius: 50%;
+  margin-right: 10px; /* Adjust the spacing as needed */
+}
+
+.username {
+  padding-right: 10px; /* Adjust the spacing as needed */
 }

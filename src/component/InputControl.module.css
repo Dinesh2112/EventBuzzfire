@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .container label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff; /* Change text color to white */
+    margin-top: 24px;
+    display: flex;
+  }
+  
+  .container input {
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    outline: none;
+    padding: 10px 15px;
+    color: #000;
+    background-color: #fff; /* Keep the background color white */
+  }
+  
+  .container input:hover {
+    border-color: #ccc;
+  }
+  
+  .container input:focus {
+    border-color: #9900ff;
+  }

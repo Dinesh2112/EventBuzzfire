@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .leftSide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #000; /* Change background color to black */
+    color: #fff; /* Change text color to white */
+  }
+  
+  .rightSide {
+    flex: 1;
+    background-image: url('./Loginpage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .innerBox {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    text-align: center;
+    margin-left: 137px;
+  }
+  
+  .logo {
+    max-width: 238px;
+    height: 123px;
+  }
+  
+  .heading {
+    margin-top: 21px;
+    margin-bottom: 1px;
+    color: #fff;
+    display: flex;
+  }
+  
+  .divider {
+    width: 100%;
+    margin: 20px 0;
+    border-top: 1px solid #ccc;
+  }
+  
+  .googleSignup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .googleSignup p {
+    margin-bottom: 2px;
+    margin-top: -14px;
+  }
+  
+  .googleSignup button {
+    background-color: #4285f4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .error {
+    color: #ff3300;
+    font-weight: bold;
+  }
+  
+  .button {
+    background-color: #9900ff;
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 100ms;
+    cursor: pointer;
+  }
+  
+  .button:disabled {
+    background-color: gray !important;
+  }
+  
+  .button:hover {
+    background-color: #aa2aff;
+  }
+
+  
