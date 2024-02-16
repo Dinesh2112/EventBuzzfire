@@ -92,6 +92,7 @@
     font-family: 'montserrat';
     font-size: 16px;
     margin-right: -25px;
+    margin-top: 0px;
   }
 
   video{
@@ -476,7 +477,7 @@
   width: 243px;
 }
 .signin-btn{
-  height: 31px;
+  height: 39px;
   width: 118px;
   border-radius: 14px;
   background-color: rgb(85, 0, 0);
@@ -515,3 +516,208 @@
 .username {
   padding-right: 10px; /* Adjust the spacing as needed */
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+}
+
+label {
+  margin: 10px 0;
+}
+
+.tag-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.create-event-container {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  flex: 1;
+    background-image: url("C:\Users\Dinesh\OneDrive\Desktop\TY PROJECT\event-advertisment\src\component\signuppage.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Change background color to a light shade */
+    color: #343a40; /* Change text color to a darker shade */
+  line-height: 1.6;
+}
+
+.event-form {
+  max-width: 600px; /* Adjust the max-width based on your preference */
+  margin: auto;
+  background-color: #4c0101; /* White background for the form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style form section titles */
+.form-section-title {
+  font-size: 1.5em; /* Increase font size for section titles */
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Style input and textarea */
+.event-input,
+.event-textarea {
+  width: 100%;
+  padding: 12px; /* Increase padding for input and textarea */
+  margin-bottom: 15px;
+  border: 1px solid #ced4da; /* Use a subtle border color */
+  border-radius: 4px;
+  color: #ffffff; /* Dark text color */
+  background-color: #000000; /* White background */
+}
+
+/* Style select dropdown */
+.event-input {
+  appearance: none;
+  padding: 12px;
+  background-color: #000000;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+/* Style checkbox and toggle switch */
+.event-checkbox {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #ced4da; /* Default background color for switch */
+  border-radius: 20px; /* Round corners */
+  margin-right: 10px;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #161616; /* Toggle color when switched on */
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #000000; /* White circle inside the switch */
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Change switch appearance when toggled */
+.toggle-switch input:checked + .slider {
+  background-color: #45a049; /* Toggle color when switched off */
+}
+
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(20px); /* Move circle to the right when switched off */
+}
+
+/* Add styling for the submit button */
+.submit-button {
+  background-color: #912929;
+  color: #fff;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s; /* Add transition for button hover effect */
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.events-page {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px; /* Add some padding to the page */
+  background-color: #000000;
+  color: #343a40;
+  min-height: 100vh;
+}
+
+.events-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.event-card {
+  text-decoration: none;
+  color: #333;
+  margin: 10px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-card-img img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.event-card-details {
+  padding: 15px;
+}
+
+.event-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+
+

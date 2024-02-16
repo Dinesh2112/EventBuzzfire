@@ -9,9 +9,18 @@ import logo from "./logo.png";
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
+import { useDispatch } from 'react-redux';
+import { addUser } from "../store/slices/UserSlice"; 
+
+
 const googleProvider = new GoogleAuthProvider();
 
+
+
 const LoginPage = () => {
+   // Initialize a dispatch
+   const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
@@ -41,7 +50,10 @@ const LoginPage = () => {
 
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
+         // Add the user id user state
+         dispatch(addUser(res.user.uid))
         setSubmitButtonDisabled(false);
+        
         navigate("/");
       })
       .catch((err) => {
@@ -52,7 +64,11 @@ const LoginPage = () => {
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      let res = await signInWithPopup(auth, googleProvider);
+     
+       // Add the user id user state
+       dispatch(addUser(res.user.uid))
+
       navigate("/");
     } catch (error) {
       console.error("Error signing in with Google:", error);

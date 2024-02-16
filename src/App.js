@@ -7,6 +7,9 @@ import Cards from './component/cards';
 import Footer from './component/footer';
 import LoginPage from './component/Loginpage';  // Import your LoginPage component
 import Signup from './component/Signup';
+import CreateEvent from './component/create-event';
+import Events from './component/Events';
+import EventDetails from './component/EventDetails';
 
 const App = () => {
   return (
@@ -20,6 +23,9 @@ const App = () => {
         </>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/events" element={<Events/>} />
+        <Route path="/event/:title" element={<EventDetails />}></Route>
       </Routes>
     </Router>
   );

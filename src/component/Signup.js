@@ -8,8 +8,10 @@ import logo from "./logo.png";
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
-
 const googleProvider = new GoogleAuthProvider();
+
+
+
 
 const Signup = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
@@ -6,6 +6,7 @@ import logo from './logo.png';
 import bgvideo from './bgvideo.mp4';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,7 +57,7 @@ export default function Navbar() {
 
   const handleCreateEvent = () => {
     if (user) {
-      navigate('/create-event');
+      navigate('/create-event'); 
     } else {
       navigate('/login');
     }
@@ -67,15 +68,15 @@ export default function Navbar() {
       <div className='nav'>
         <img src={logo} className='logo' alt='/' />
 
-        <div className='search-bar'>
+        {/* <div className='search-bar'>
           <input type='text' placeholder='Search...' />
-        </div>
+        </div> */}
 
         <div className='menu-items'>
           <Link to='/'>
             <h4>HOME</h4>
           </Link>
-          <Link to='/'>
+          <Link to='/events'>
             <h4>EVENTS</h4>
           </Link>
           {/* <Link to='/create-event'> */}

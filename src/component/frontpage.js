@@ -1,6 +1,7 @@
 import React ,{ useEffect }from 'react'
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from 'react-router-dom';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +27,9 @@ export default function Frontpage() {
             <h1>DISCOVER NEW EVENTS AROUND YOU</h1>
             <h4>Explore hundreds of music festivals with our comprehensive guide,</h4> 
             <h4>featuring past lineups, set times, ticket prices, festival maps, and latest news.</h4>
-            <button>Explore now</button>
+            <Link to='/events'>
+                <button>Explore now</button>
+              </Link>
         </div>
 
         <div className='page2'>
