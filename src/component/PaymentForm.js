@@ -5,7 +5,8 @@ const PaymentForm = ({ amount, onSuccess, onError, eventId }) => {
   const [paymentId, setPaymentId] = useState(null);
 
   const options = {
-    key: 'your_razorpay_key', // Replace with your Razorpay key
+    key: 'rzp_test_4LD859IhYLd0'
+    , // Replace with your Razorpay key
     amount: amount * 100,
     currency: 'INR',
     name: 'Event Booking',

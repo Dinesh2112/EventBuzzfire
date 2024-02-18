@@ -10,9 +10,6 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 const googleProvider = new GoogleAuthProvider();
 
-
-
-
 const Signup = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -81,6 +78,7 @@ const Signup = () => {
           />
           <InputControl
             label="Password"
+            type="password"  // Set the type to "password"
             placeholder="Enter password"
             onChange={(event) =>
               setValues((prev) => ({ ...prev, pass: event.target.value }))

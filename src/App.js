@@ -9,7 +9,7 @@ import LoginPage from './component/Loginpage';  // Import your LoginPage compone
 import Signup from './component/Signup';
 import CreateEvent from './component/create-event';
 import Events from './component/Events';
-import EventDetails from './component/EventDetails';
+import EventsDetails from './component/EventDetails';
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/events" element={<Events/>} />
-        <Route path="/event/:title" element={<EventDetails />}></Route>
+        <Route path="/event/:userId/:eventId" element={<EventsDetails />} />
       </Routes>
     </Router>
   );

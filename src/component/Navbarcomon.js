@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.png';
 
-export default function Navbarcommon() {
+export default function Navbarcommon({ onSearch }) {
   const [user, setUser] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,12 +35,24 @@ export default function Navbarcommon() {
     }
   };
 
+  const handleSearch = () => {
+    onSearch(searchQuery);
+  };
+
   return (
-    <div className='nav'>
+    <div className='navbar-common'>
       <img src={logo} className='logo' alt='/' />
 
       <div className='search-bar'>
-        <input type='text' placeholder='Search...' />
+        <input
+          type='text'
+          placeholder='Search...'
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button className='search-btn' onClick={handleSearch}>
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
       </div>
 
       <div className='menu-items'>
