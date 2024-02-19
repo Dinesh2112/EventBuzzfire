@@ -10,6 +10,7 @@ import Signup from './component/Signup';
 import CreateEvent from './component/create-event';
 import Events from './component/Events';
 import EventsDetails from './component/EventDetails';
+import Dashboard from './component/Dashboard';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/events" element={<Events/>} />
         <Route path="/event/:userId/:eventId" element={<EventsDetails />} />
+        <Route path="/dashboard" element={<Dashboard/>} />
       </Routes>
     </Router>
   );

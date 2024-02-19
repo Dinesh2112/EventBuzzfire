@@ -7,11 +7,45 @@ import 'slick-carousel/slick/slick-theme.css';
 import { getDoc, doc } from 'firebase/firestore';
 import { txtDB } from './firebase';
 import Footer from './footer';
-
+import PaymentGateway from './PaymentGateway';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from './firebase';
 
 const EventDetails = () => {
   const { userId, eventId } = useParams();
   const [eventData, setEventData] = useState(null);
+  const [selectedTickets, setSelectedTickets] = useState(1);
+  const [paymentInfo, setPaymentInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({ name: '', phoneNumber: '' });
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Script loading function (adds it on top of the screen)
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+
+  // Loads Razorpay script
+  useEffect(() => {
+    async function initializeRazorpay() {
+      const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+
+      if (!res) {
+        alert("Razorpay SDK failed to load. Are you online?");
+      }
+    }
+
+    initializeRazorpay();
+  }, []);
 
   useEffect(() => {
     const fetchEventDetails = async () => {
@@ -58,7 +92,31 @@ const EventDetails = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
-  const [selectedTickets, setSelectedTickets] = useState(1);
+
+  const handleQuantityChange = (event) => {
+    const quantity = parseInt(event.target.value, 10);
+    setSelectedTickets(quantity);
+  };
+
+  const handlePaymentInitiation = () => {
+    // Open the popup to collect name and phone number
+    setShowPopup(true);
+  };
+
+  const handlePopupSubmit = () => {
+    // Validate phone number
+    const phoneNumberRegex = /^[0-9]+$/;
+    if (!userInfo.phoneNumber.match(phoneNumberRegex)) {
+      alert('Please enter a valid phone number with only digits.');
+      return;
+    }
+    setShowPopup(false);
+    PaymentGateway({
+      totalCostInPaisa: eventData.ticketPrice * selectedTickets * 100,
+      userInfo: userInfo,
+    });
+  };
+
   return (
     <>
       <nav><Navbarcommon /></nav>
@@ -123,18 +181,76 @@ const EventDetails = () => {
               </>
             )}
             <div className='ticket-section'>
-      <h2 className='ticket-heading'>Tickets:</h2>
-      <h2 className='ticket-info'>Price:₹{eventData.ticketPrice}</h2>
-      <h2 className='ticket-info'>Available Quantity: {eventData.ticketQuantity}</h2>
-      <button className='book-now-btn'>Book Now</button>
-    </div>
-
+              <h2 className='ticket-heading'>Tickets:</h2>
+              <div className='ticket-details'>
+                <div className='ticket-info'>
+                  <h2 className='ticket-price'>Price: ₹{eventData.ticketPrice}</h2>
+                  <h2 className='available-quantity'>Available Quantity: {eventData.ticketQuantity}</h2>
+                </div>
+              </div>
+              <div className='checkout-section'>
+                <h2 className='Ticket-label'>Ticket Quantity:</h2>
+                <div className='Ticket-input'>
+                  <button
+                    className='Ticket-minus-btn'
+                    onClick={() => setSelectedTickets((prev) => Math.max(prev - 1, 1))}
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    className='Ticket-input-field'
+                    value={selectedTickets || 1} 
+                    onChange={handleQuantityChange}
+                  />
+                  <button
+                    className='Ticket-plus-btn'
+                    onClick={() => setSelectedTickets((prev) => prev + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+                <h2 className='total-price'>Total: ₹{(eventData.ticketPrice * selectedTickets).toFixed(2)}</h2>
+                <button className='book-now-btn' onClick={handlePaymentInitiation}>
+                  Check out for ₹{(eventData.ticketPrice * selectedTickets).toFixed(2)}
+                </button>
+              </div>
+            </div>
           </>
         ) : (
           <p>Loading...</p>
         )}
       </div>
-      <Footer/>
+
+      {/* Popup for collecting name and phone number */}
+      {showPopup && (
+        <div className="popup-container">
+          <div className="popup">
+            <h2>Enter Your Details</h2>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              value={userInfo.name}
+              onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
+            />
+            <label htmlFor="phoneNumber">Phone Number:</label>
+            <input
+              type="text"
+              id="phoneNumber"
+              value={userInfo.phoneNumber}
+              onChange={(e) => {
+                // Validate and allow only numbers
+                if (/^[0-9]*$/.test(e.target.value)) {
+                  setUserInfo({ ...userInfo, phoneNumber: e.target.value });
+                }
+              }}
+            />
+            <button onClick={handlePopupSubmit}>Submit</button>
+          </div>
+        </div>
+      )}
+      <Footer />
     </>
   );
 };
