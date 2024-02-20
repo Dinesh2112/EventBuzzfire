@@ -312,6 +312,7 @@ const CreateEvent = () => {
           <textarea
             name="eventDescription"
             value={eventData.eventDescription}
+            placeholder="Give much as much as information and give Phone Number compulsorily"
             onChange={handleInputChange}
             required
             className="event-input"
