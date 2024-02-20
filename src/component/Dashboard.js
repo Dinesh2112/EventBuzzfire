@@ -1,31 +1,81 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import Navbarcommon from './Navbarcomon';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { db } from './firebase';
+import { useParams } from 'react-router-dom';
 
-const Dashboard = () => {
-  // Assuming you have a user object in your Redux state
-  const user = useSelector((state) => state.users);
+const Dashboard = ({ history }) => {
+  const { userId } = useParams();
+  const [userTicketDetails, setUserTicketDetails] = useState([]);
 
-  // Check if the user object and its 'name' property are defined before accessing them
-  const userName = user && user.name ? user.name : 'Guest';
+  useEffect(() => {
+    const fetchUserTicketDetails = async () => {
+      try {
+        if (!userId) {
+          console.error('User ID is missing. Redirecting to login.');
+          history?.push('/login');
+          return;
+        }
 
-  // Assuming you have an 'events' property in your user object
-  const events = user && user.events ? user.events : [];
+        // Adjusted query to get ticket details based on the user's document ID
+        const q = query(collection(db, 'userTicketDetails'), where('userId', '==', userId));
+        const querySnapshot = await getDocs(q);
+
+        const ticketDetailsData = [];
+        querySnapshot.forEach((doc) => {
+          const { eventId, ...rest } = doc.data();  // Extract eventId
+          ticketDetailsData.push({ ticketId: doc.id, eventId, ...rest });  // Include eventId in the data
+        });
+
+        setUserTicketDetails(ticketDetailsData);
+      } catch (error) {
+        console.error('Error fetching user ticket details:', error);
+        history?.push('/login');
+      }
+    };
+
+    fetchUserTicketDetails();
+  }, [userId, history]);
 
   return (
-    <div>
-      <h1>Welcome to your Dashboard, {userName}!</h1>
-      <h2>Your Events:</h2>
-      {events.length > 0 ? (
-        <ul>
-          {events.map((event) => (
-            <li key={event.id}>{event.title}</li>
-            // Replace 'id' and 'title' with your actual event properties
-          ))}
-        </ul>
-      ) : (
-        <p>No events available.</p>
-      )}
-    </div>
+    <>
+      <nav>
+        <Navbarcommon />
+      </nav>
+      <div className="dashboard-container">
+        <div className='dasboard-table'>
+          <h1>Your Ticket Details</h1>
+          {userTicketDetails.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Event Title</th>
+                  
+                  <th>Amount Paid (₹)</th>
+                  <th>Name</th>
+                  <th>Phone Number</th>
+                  <th>Ticket Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userTicketDetails.map((ticket) => (
+                  <tr key={ticket.ticketId}>
+                    <td>{ticket.eventTitle}</td>
+                    
+                    <td>{ticket.amountPaid}</td>
+                    <td>{ticket.name}</td>
+                    <td>{ticket.phoneNumber}</td>
+                    <td>{ticket.ticketQuantity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No ticket details found.</p>
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 

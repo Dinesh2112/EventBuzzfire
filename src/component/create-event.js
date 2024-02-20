@@ -443,6 +443,19 @@ const CreateEvent = () => {
             className="event-input"
           />
         </label>
+        <label>
+        
+  Organizer Phone Number:
+  <input
+    type="tel"
+    name="organizerPhoneNumber"
+    value={eventData.organizerPhoneNumber}
+    onChange={handleInputChange}
+    pattern="[0-9]*"  // Use a regular expression to allow only numbers
+    required
+    className="event-input"
+  />
+</label>
 
         <h2 className="form-section-title">Images</h2>
         <label>

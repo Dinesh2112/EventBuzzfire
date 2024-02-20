@@ -72,7 +72,7 @@
   }
   .search-btn{
     margin-top: -11px;
-    margin-left: 555px;
+    margin-left: 586px;
     background-color: black;
     border-radius: 20px;
     padding-top: 8px;
@@ -294,6 +294,7 @@
   padding-bottom: 69px;
   position: relative;
   z-index: 10;
+  background-color: black;
 }
 .card {
   height: 34vh ;
@@ -1091,3 +1092,42 @@ button:hover {
 .popup button:hover {
   background: #45a049;
 }
+
+.dashboard-container {
+  max-width: 1462px;
+  margin: 150px auto 20px;
+  padding-top: 19px;
+  background-color: #ffffff;
+}
+
+.dasboard-table{
+  max-width: 1130px;
+    margin: 11px auto 11px;
+    padding-bottom: 17px;
+    background-color: #b81356;}
+
+
+.dasboard-table h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dasboard-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.dasboard-table td {
+  border: 3px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.dasboard-table th {
+  background-color: #f2f2f2;
+  border: 3px solid #ddd;
+  padding: 10px;
+  background-color: #b81356;
+}
+

@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.png';
 
-export default function Navbarcommon({ onSearch }) {
+const Navbarcommon = ({ onSearch }) => {
   const [user, setUser] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook to get the navigate function
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -39,6 +39,15 @@ export default function Navbarcommon({ onSearch }) {
     onSearch(searchQuery);
   };
 
+  // Updated function to redirect to Dashboard
+  const redirectToDashboard = () => {
+    // Assuming user has a userId
+    const userId = user?.uid;
+    if (userId) {
+      navigate(`/dashboard/${userId}`);
+    }
+  };
+
   return (
     <div className='navbar-common'>
       <img src={logo} className='logo' alt='/' />
@@ -66,7 +75,7 @@ export default function Navbarcommon({ onSearch }) {
 
         {user ? (
           <div className='user-profile'>
-            <div className='user-info'>
+            <div className='user-info' onClick={redirectToDashboard}>
               {user.providerData[0].providerId === 'google.com' && user.photoURL && (
                 <img src={user.photoURL} alt='profile' className='profile-image' />
               )}
@@ -75,7 +84,7 @@ export default function Navbarcommon({ onSearch }) {
               )}
               <p className='username'>{user.displayName}</p>
             </div>
-            <button className='text-button' onClick={handleLogout}>
+            <button className='text-button logout-button' onClick={handleLogout}>
               LOGOUT
             </button>
           </div>
@@ -92,4 +101,6 @@ export default function Navbarcommon({ onSearch }) {
       </div>
     </div>
   );
-}
+};
+
+export default Navbarcommon;

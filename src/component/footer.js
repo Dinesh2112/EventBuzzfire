@@ -18,18 +18,18 @@ export default function Footer() {
           <h3>CHAITANYA MARAR</h3>
         </div>
         <div className="f3">
-          <h3>coffee shop</h3>
-          <h3>LEAGUES</h3>
-          <h3>Contact us</h3>
+          <h3>MAKE YOUR</h3>
+          <h3>EVENT</h3>
+          <h3>BOOKED</h3>
         </div>
         <div className="f4">
           <h4>
-            A20, SclassNameCUP BYPASS <br />
-            CHISLEHURST <br />
-            KENT <br />
-            BR7 6RP <br />
-            TEL: 0208 309 0181 <br />
-            GET DIRECTIONS <br />
+           Best Site To Advetise <br />
+            Your Events And <br />
+            Programs <br />
+            What are You Waiting<br />
+            For Go Book your Event <br />
+            {/* GET DIRECTIONS <br /> */}
           </h4>
         </div>
       </div>

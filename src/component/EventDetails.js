@@ -103,18 +103,38 @@ const EventDetails = () => {
     setShowPopup(true);
   };
 
-  const handlePopupSubmit = () => {
+  const handlePopupSubmit = async () => {
     // Validate phone number
     const phoneNumberRegex = /^[0-9]+$/;
     if (!userInfo.phoneNumber.match(phoneNumberRegex)) {
       alert('Please enter a valid phone number with only digits.');
       return;
     }
+  
     setShowPopup(false);
-    PaymentGateway({
-      totalCostInPaisa: eventData.ticketPrice * selectedTickets * 100,
-      userInfo: userInfo,
-    });
+  
+    // Create a document in the userTicketDetails collection
+    try {
+      const ticketDetailsDocRef = await addDoc(collection(db, 'userTicketDetails'), {
+        userId,
+        eventId,  // Add eventId to the document data
+        name: userInfo.name,
+        phoneNumber: userInfo.phoneNumber,
+        eventTitle: eventData.title,
+        amountPaid: eventData.ticketPrice * selectedTickets,
+        ticketQuantity: selectedTickets,
+      });
+  
+      console.log('Ticket details stored successfully. Document ID:', ticketDetailsDocRef.id);
+  
+      // Now proceed to payment
+      PaymentGateway({
+        totalCostInPaisa: eventData.ticketPrice * selectedTickets * 100,
+        userInfo: userInfo,
+      });
+    } catch (error) {
+      console.error('Error storing ticket details:', error);
+    }
   };
 
   return (
